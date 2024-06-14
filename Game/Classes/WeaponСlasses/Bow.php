@@ -7,7 +7,7 @@ class Bow extends Weapon
 
     public function __construct()
     {
-        $this->physicalBaseDamage = rand(1, 2);
+        $this->physicalBaseDamage = rand(1, 3);
     }
 
     public function getPhysicalBaseDamage()
