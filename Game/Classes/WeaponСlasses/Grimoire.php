@@ -3,5 +3,5 @@
 class Grimoire extends Weapon
 {
     protected $physicalBaseDamage = 0;
-    protected $magicBaseDamage = 1;
+    protected $magicBaseDamage = 2;
 }

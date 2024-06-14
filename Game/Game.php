@@ -51,15 +51,7 @@ echo '</div>';
 
 $aspen->mAttack($lordArcher);
 $lordArcher->pAttack($aspen);
-$lordArcher->pAttack($aspen);
-$lordArcher->pAttack($aspen);
-$lordArcher->pAttack($aspen);
-$lordArcher->pAttack($aspen);
-$lordArcher->pAttack($aspen);
-$lordArcher->pAttack($aspen);
-$lordArcher->pAttack($aspen);
-$lordArcher->pAttack($aspen);
-$lordArcher->pAttack($aspen);
+
 //$lordArcher->pAttack($aspen);
 //
 $lordArcher->pAttack($dunkan);
