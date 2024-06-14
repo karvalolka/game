@@ -1,0 +1,49 @@
+
+.red {
+    color: red;
+    font-size: 20px;
+}
+
+.blue {
+    color: blue;
+    font-size: 20px;
+}
+
+.block {
+    display: inline-block;
+    margin: 1px 1px 1px 10px;
+}
+
+.bold {
+    display: block;
+    border: 1px solid #000;
+    font-weight: bold;
+    margin: 3px;
+    padding: 3px;
+}
+
+.dashed {
+    display: block;
+    border: 1px dashed gray;
+    margin: 3px;
+    padding: 3px;
+}
+
+.more {
+    font-family: Algerian;
+    font-size: 30px;
+}
+
+.size {
+    font-size: 25px;
+}
+
+.char {
+    max-width: 300px;
+    border: 1px solid blue;
+    margin: 10px 7px;
+    padding: 3px;
+}
+.container {
+    display: flex;
+}
