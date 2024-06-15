@@ -4,13 +4,15 @@
     <title>Game</title>
 </head>
 <body>
-<form action="#" method="get">
+<form action="create-char.php" method="post">
 <div>
     <p>Создание песнонажа:</p>
 </div>
 <div>
-    <p>Придумайте ник</p>
-    <input type="text" placeholder="Введите ник">
+    <p>
+        <label for="name">Придумайте ник:</label>
+        <input name="name" id="name" type="text" placeholder="Введите ник">
+     </p>
 </div>
 <div>
     <p>Выберите класс:</p>
@@ -26,11 +28,10 @@
     </div>
 </div>
 <div>
-    <button>В игру!</button>
+    <button type="submit">В игру!</button>
 </div>
 </form>
 <?php
-
 
 ?>
 </body>
