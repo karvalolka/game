@@ -10,7 +10,7 @@
 </div>
 <div>
     <p>
-        <label for="name">Придумайте ник:</label>
+        <label for="name">Придумайте ник:</label><br>
         <input name="name" id="name" type="text" placeholder="Введите ник">
      </p>
 </div>
