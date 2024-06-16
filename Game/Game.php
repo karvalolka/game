@@ -31,9 +31,9 @@ $bow = new Bow();
 $sword = new Sword();
 $grimoire = new Grimoire();
 
-$leather = new Leather(1, 2, 0);
-$plate = new Plate(0, 3, 1);
-$tunic = new Tunic(2, 1, 1);
+$leather = new Leather();
+$plate = new Plate();
+$tunic = new Tunic();
 
 $lordArcher->setWeapon($bow);
 $aspen->setWeapon($grimoire);

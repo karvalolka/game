@@ -1,16 +1,7 @@
 <?php
 class Armor
 {
-    protected $physicalResist;
-    protected $magicResist;
-    protected $needLevel;
 
-    public function __construct($magicResist, $physicalResist, $needLevel)
-    {
-        $this->magicResist = $magicResist;
-        $this->physicalResist = $physicalResist;
-        $this->needLevel = $needLevel;
-    }
     public function getPhysicalResist()
     {
         return $this->physicalResist;
