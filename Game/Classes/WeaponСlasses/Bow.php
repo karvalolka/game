@@ -1,5 +1,6 @@
 <?php
 
+namespace Classes\WeaponClasses;
 class Bow extends Weapon
 {
     protected $physicalBaseDamage;

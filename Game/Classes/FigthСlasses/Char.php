@@ -1,5 +1,6 @@
 <?php
 
+namespace Classes\FigthClasses;
 class Char
 {
     protected $strength;
@@ -141,7 +142,6 @@ class Char
                 ⚔️Оружие: {$this->getWeapon()}<br>
                 🛡️Класс брони: {$this->getArmor()}<br>";
     }
-
     public function getHP()
     {
         return $this->HP;

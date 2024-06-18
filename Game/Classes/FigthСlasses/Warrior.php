@@ -1,5 +1,6 @@
 <?php
 
+namespace Classes\FigthClasses;
 class Warrior extends Char
 {
     protected $strength = 6;

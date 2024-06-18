@@ -1,5 +1,6 @@
 <?php
 
+namespace Classes\WeaponClasses;
 class Weapon
 {
 

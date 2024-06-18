@@ -8,20 +8,40 @@
 
 <?php
 
-require_once 'Classes\FigthСlasses\Char.php';
-require_once 'Classes\FigthСlasses\Archer.php';
-require_once 'Classes\FigthСlasses\Mage.php';
-require_once 'Classes\FigthСlasses\Warrior.php';
-require_once 'Classes\ArmorClasses\Armor.php';
-require_once 'Classes\ArmorClasses\Leather.php';
-require_once 'Classes\ArmorClasses\Tunic.php';
-require_once 'Classes\ArmorClasses\Plate.php';
-require_once 'Classes\WeaponСlasses\Weapon.php';
-require_once 'Classes\WeaponСlasses\Bow.php';
-require_once 'Classes\WeaponСlasses\Grimoire.php';
-require_once 'Classes\WeaponСlasses\Sword.php';
+//require_once 'Classes\FigthСlasses\Char.php';
+//require_once 'Classes\FigthСlasses\Archer.php';
+//require_once 'Classes\FigthСlasses\Mage.php';
+//require_once 'Classes\FigthСlasses\Warrior.php';
+//require_once 'Classes\ArmorClasses\Armor.php';
+//require_once 'Classes\ArmorClasses\Leather.php';
+//require_once 'Classes\ArmorClasses\Tunic.php';
+//require_once 'Classes\ArmorClasses\Plate.php';
+//require_once 'Classes\WeaponСlasses\Weapon.php';
+//require_once 'Classes\WeaponСlasses\Bow.php';
+//require_once 'Classes\WeaponСlasses\Grimoire.php';
+//require_once 'Classes\WeaponСlasses\Sword.php';
 
-$bow = new Bow();
+use Classes\WeaponClasses\Bow;
+use Classes\WeaponClasses\Sword;
+use Classes\WeaponClasses\Grimoire;
+use Classes\ArmorClasses\Leather;
+use Classes\ArmorClasses\Plate;
+use Classes\ArmorClasses\Tunic;
+use Classes\FigthClasses\Mage;
+use Classes\FigthClasses\Archer;
+use Classes\FigthClasses\Warrior;
+
+function autoloder($class)
+{
+    $class = str_replace("\\", "/", $class);
+    $file = __DIR__ . "/{$class}.php";
+    if (file_exists($file)) {
+        require $file;
+    }
+}
+spl_autoload_register('autoloder');
+
+$bow = new \Classes\WeaponClasses\Bow;
 $sword = new Sword();
 $grimoire = new Grimoire();
 
