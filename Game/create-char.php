@@ -8,40 +8,14 @@
 
 <?php
 
-//require_once 'Classes\FigthСlasses\Char.php';
-//require_once 'Classes\FigthСlasses\Archer.php';
-//require_once 'Classes\FigthСlasses\Mage.php';
-//require_once 'Classes\FigthСlasses\Warrior.php';
-//require_once 'Classes\ArmorClasses\Armor.php';
-//require_once 'Classes\ArmorClasses\Leather.php';
-//require_once 'Classes\ArmorClasses\Tunic.php';
-//require_once 'Classes\ArmorClasses\Plate.php';
-//require_once 'Classes\WeaponСlasses\Weapon.php';
-//require_once 'Classes\WeaponСlasses\Bow.php';
-//require_once 'Classes\WeaponСlasses\Grimoire.php';
-//require_once 'Classes\WeaponСlasses\Sword.php';
 
-use Classes\WeaponClasses\Bow;
-use Classes\WeaponClasses\Sword;
-use Classes\WeaponClasses\Grimoire;
-use Classes\ArmorClasses\Leather;
-use Classes\ArmorClasses\Plate;
-use Classes\ArmorClasses\Tunic;
-use Classes\FigthClasses\Mage;
-use Classes\FigthClasses\Archer;
-use Classes\FigthClasses\Warrior;
+use Classes\WeaponClasses\{Bow as Bow, Sword, Grimoire};
+use Classes\ArmorClasses\{Leather, Plate, Tunic};
+use Classes\FightClasses\{Mage, Archer, Warrior};
 
-function autoloder($class)
-{
-    $class = str_replace("\\", "/", $class);
-    $file = __DIR__ . "/{$class}.php";
-    if (file_exists($file)) {
-        require $file;
-    }
-}
-spl_autoload_register('autoloder');
+require_once __DIR__ . '/vendor/autoload.php';
 
-$bow = new \Classes\WeaponClasses\Bow;
+$bow = new Bow();
 $sword = new Sword();
 $grimoire = new Grimoire();
 

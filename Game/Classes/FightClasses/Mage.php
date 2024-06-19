@@ -1,6 +1,6 @@
 <?php
 
-namespace Classes\FigthClasses;
+namespace Classes\FightClasses;
 class Mage extends Char
 {
     protected $strength = 2;
