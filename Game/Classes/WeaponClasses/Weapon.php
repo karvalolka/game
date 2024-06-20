@@ -1,33 +1,19 @@
 <?php
 
 namespace Classes\WeaponClasses;
-class Weapon
+abstract class Weapon
 {
 
-    protected $needLevel = 1;
+    public int $needLevel = 1;
+    public int $physicalBaseDamageMin = 0;
+    public int $physicalBaseDamageMax = 0;
+    public int $magicBaseDamage = 0;
 
-    public function getNeedLevel()
+    public function getPhysicalBaseDamage(): int
     {
-        return $this->needLevel;
+        return rand($this->physicalBaseDamageMin, $this->physicalBaseDamageMax);
     }
-    public function setNeedLevel($needLevel)
-    {
-        $this->needLevel = $needLevel;
-    }
-    public function getPhysicalBaseDamage()
-    {
-        return $this->physicalBaseDamage;
-    }
-    public function getMagicBaseDamage()
-    {
-        return $this->magicBaseDamage;
-    }
-    public function setPhysicalBaseDamage($physicalBaseDamage)
-    {
-        $this->physicalBaseDamage = $physicalBaseDamage;
-    }
-    public function setMagicBaseDamage($magicBaseDamage)
-    {
-        $this->magicBaseDamage = $magicBaseDamage;
-    }
+
+    abstract public function getWeaponName(): string;
+
 }

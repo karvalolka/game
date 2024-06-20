@@ -3,17 +3,8 @@
 namespace Classes\WeaponClasses;
 class Bow extends Weapon
 {
-    protected $physicalBaseDamage;
-    protected $magicBaseDamage = 0;
-
-    public function __construct()
+    public function getWeaponName(): string
     {
-        $this->physicalBaseDamage = rand(1, 3);
+        return "Лук";
     }
-
-    public function getPhysicalBaseDamage()
-    {
-        return $this->physicalBaseDamage;
-    }
-
 }

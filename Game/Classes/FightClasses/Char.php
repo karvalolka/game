@@ -1,6 +1,10 @@
 <?php
 
 namespace Classes\FightClasses;
+
+use Classes\ArmorClasses\Armor;
+use Classes\WeaponClasses\Weapon;
+
 class Char
 {
     protected $strength;
@@ -10,7 +14,7 @@ class Char
     protected $HP;
     protected $baseMana;
     protected $level = 1;
-    protected $weapon;
+    protected Weapon|null $weapon = null;
     protected $armor;
     protected $nickname;
 
@@ -18,15 +22,15 @@ class Char
     {
         $this->nickname = $nickname;
     }
-    
-    public function setWeapon($weapon)
+
+    public function setWeapon(Weapon $weapon)
     {
-        if ($this->level >= $weapon->getNeedLevel()) {
+        if ($this->level >= $weapon->needLevel) {
             $this->weapon = $weapon;
         }
     }
 
-    public function setArmor($armor)
+    public function setArmor(Armor $armor)
     {
         if ($this->level >= $armor->getNeedLevel()) {
             $this->armor = $armor;
@@ -36,7 +40,7 @@ class Char
     public function getWeapon()
     {
         if ($this->weapon) {
-            $weapon = get_class($this->weapon);
+            $weapon = $this->weapon->getWeaponName();
         } else {
             $weapon = 'Нет оружия';
         }
@@ -50,19 +54,36 @@ class Char
         } else {
             $armor = 'Нет брони';
         }
+
         return $armor;
     }
 
-    public function getPhysicalAttack()
+    public function getPhysicalAttack(string $type = ''): int
     {
+        $weaponDamage = 0;
+
         if ($this->weapon) {
-            $weaponDamage = $this->weapon->getPhysicalBaseDamage();
-        } else {
-            $weaponDamage = 0;
+            switch ($type) {
+                case 'min':
+                    $weaponDamage = $this->weapon->physicalBaseDamageMin;
+                    break;
+                case 'max':
+                    $weaponDamage = $this->weapon->physicalBaseDamageMax;
+                    break;
+                default:
+                    $weaponDamage = $this->weapon->getPhysicalBaseDamage();
+            }
         }
-        $damage = $this->level - 1 + $weaponDamage;
-        return $damage;
+
+        return $this->getPhysicalAttackByLevel($weaponDamage);
     }
+
+
+    private function getPhysicalAttackByLevel(int $weaponDamage): int
+    {
+        return $this->level - 1 + $weaponDamage;
+    }
+
 
     public function getPResister()
     {
@@ -77,7 +98,7 @@ class Char
     public function getMagicAttack()
     {
         if ($this->weapon) {
-            $weaponDamage = $this->weapon->getMagicBaseDamage();
+            $weaponDamage = $this->weapon->magicBaseDamage;
         } else {
             $weaponDamage = 0;
         }
@@ -121,7 +142,7 @@ class Char
         $newHP = $enemyHP - $damage;
         $enemy->setHP($newHP);
         echo $this->getNickname() . ' отнял ' . '<span class="red">' . $damage . '</span>' . ' здоровья у ' . $enemy->getNickname() . '<br>';
-        if ($enemy->getHP() <=0){
+        if ($enemy->getHP() <= 0) {
             echo $enemy->getNickname() . ' погиб' . '<br>';
         }
     }
@@ -135,20 +156,22 @@ class Char
                 <span class='bold'>Сила: {$this->strength}<br>
                 Ловкость: {$this->agile}<br>
                 Интеллект: {$this->intelligence}</span>
-                <span class='dashed'>Физический урон: {$this->getPhysicalAttack()}<br>
+                <span class='dashed'>Физический урон: {$this->getPhysicalAttack('min')}-{$this->getPhysicalAttack('max')}<br>
                 Магический урон: {$this->getMagicAttack()}<br>
                 Сопротивление физическому урону:{$this->getPResister()}<br>
                 Сопротивление магическому урону:{$this->getMResister()}</span>
                 ⚔️Оружие: {$this->getWeapon()}<br>
                 🛡️Класс брони: {$this->getArmor()}<br>";
     }
+
     public function getHP()
     {
         return $this->HP;
     }
+
     public function setHP($HP): void
     {
-        if ($HP < 0){
+        if ($HP < 0) {
             $HP = 0;
         }
         $this->HP = $HP;

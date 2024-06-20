@@ -8,14 +8,28 @@ class Warrior extends Char
     protected $agile = 3;
     protected $baseHP = 7;
     protected $baseMana = 3;
-    public function getPhysicalAttack()
+    public function getPhysicalAttack(string $type = ''): int
     {
-        $out = parent::getPhysicalAttack() + $this->strength;
+        switch ($type){
+            case 'min':
+                $attack = parent::getPhysicalAttack('min');
+                break;
+            case 'max':
+                $attack = parent::getPhysicalAttack('max');
+                break;
+            default:
+                $attack = parent::getPhysicalAttack();
+        }
+
+        $out = $attack + $this->strength;
+
         if ($out < 0) {
             $out = 0;
         }
+
         return $out;
     }
+
 
     public function getMagicAttack()
     {

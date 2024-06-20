@@ -9,7 +9,7 @@
 <?php
 
 
-use Classes\WeaponClasses\{Bow as Bow, Sword, Grimoire};
+use Classes\WeaponClasses\{Bow, Sword, Grimoire};
 use Classes\ArmorClasses\{Leather, Plate, Tunic};
 use Classes\FightClasses\{Mage, Archer, Warrior};
 
@@ -22,6 +22,10 @@ $grimoire = new Grimoire();
 $leather = new Leather();
 $plate = new Plate();
 $tunic = new Tunic();
+
+if (!$_POST) {
+    return '';
+}
 
 if ($_POST['class'] == 'Mage') {
     $m = new Mage(($_POST['name']));
