@@ -3,13 +3,13 @@
 namespace Classes\FightClasses;
 class Archer extends Char
 {
-    protected $strength = 3;
-    protected $intelligence = 2;
-    protected $agile = 6;
-    protected $baseHP = 4;
-    protected $baseMana = 5;
+    protected int $strength = 3;
+    protected int $intelligence = 2;
+    protected int $agile = 6;
+    protected int $baseHP = 4;
+    protected int $baseMana = 5;
 
-    public function getPhysicalAttack()
+    public function getPhysicalAttack(string $type = ''): int
     {
         $out = parent::getPhysicalAttack() + $this->agile;
         if ($out < 0) {
@@ -17,7 +17,7 @@ class Archer extends Char
         }
         return $out;
     }
-    public function getMagicAttack()
+    public function getMagicAttack(): int
     {
         $out = parent::getMagicAttack() - 3;
         if ($out < 0) {
@@ -25,7 +25,7 @@ class Archer extends Char
         }
         return $out;
     }
-    public function getCharacterInfo()
+    public function getCharacterInfo(): string
     {
         $out = "<div class='char'>Лучник<br>";
         $out .= parent::getCharacterInfo();

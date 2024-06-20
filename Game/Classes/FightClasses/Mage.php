@@ -3,12 +3,12 @@
 namespace Classes\FightClasses;
 class Mage extends Char
 {
-    protected $strength = 2;
-    protected $intelligence = 6;
-    protected $agile = 3;
-    protected $baseHP = 3;
-    protected $baseMana = 7;
-    public function getPhysicalAttack()
+    protected int $strength = 2;
+    protected int $intelligence = 6;
+    protected int $agile = 3;
+    protected int $baseHP = 3;
+    protected int $baseMana = 7;
+    public function getPhysicalAttack(string $type = ''): int
     {
         $out = parent::getPhysicalAttack() + $this->agile - 3;
         if ($out < 0) {
@@ -31,7 +31,7 @@ class Mage extends Char
         }
     }
 
-    public function getCharacterInfo()
+    public function getCharacterInfo(): string
     {
         $out = "<div class='char'>Маг<br>";
         $out .= parent::getCharacterInfo();

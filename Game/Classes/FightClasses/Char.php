@@ -7,37 +7,37 @@ use Classes\WeaponClasses\Weapon;
 
 class Char
 {
-    protected $strength;
-    protected $intelligence;
-    protected $agile;
-    protected $baseHP;
-    protected $HP;
-    protected $baseMana;
-    protected $level = 1;
+    protected int $strength;
+    protected int $intelligence;
+    protected int $agile;
+    protected int $baseHP;
+    protected int $HP;
+    protected int $baseMana;
+    protected int $level = 1;
     protected Weapon|null $weapon = null;
-    protected $armor;
-    protected $nickname;
+    protected Armor|null $armor = null;
+    protected string $nickname;
 
     public function __construct($nickname)
     {
         $this->nickname = $nickname;
     }
 
-    public function setWeapon(Weapon $weapon)
+    public function setWeapon(Weapon $weapon): void
     {
         if ($this->level >= $weapon->needLevel) {
             $this->weapon = $weapon;
         }
     }
 
-    public function setArmor(Armor $armor)
+    public function setArmor(Armor $armor): void
     {
         if ($this->level >= $armor->getNeedLevel()) {
             $this->armor = $armor;
         }
     }
 
-    public function getWeapon()
+    public function getWeapon(): string
     {
         if ($this->weapon) {
             $weapon = $this->weapon->getWeaponName();
@@ -47,10 +47,10 @@ class Char
         return $weapon;
     }
 
-    public function getArmor()
+    public function getArmor(): string
     {
         if ($this->armor) {
-            $armor = get_class($this->armor);
+            $armor = $this->armor->getArmorName();
         } else {
             $armor = 'Нет брони';
         }
@@ -95,7 +95,7 @@ class Char
         return $armorDef;
     }
 
-    public function getMagicAttack()
+    public function getMagicAttack(): int
     {
         if ($this->weapon) {
             $weaponDamage = $this->weapon->magicBaseDamage;
@@ -116,23 +116,22 @@ class Char
         return $armorDef;
     }
 
-    public function getBaseMana()
+    public function getBaseMana(): int
     {
-        $fullMana = $this->baseMana + $this->intelligence + $this->level;
-        return $fullMana;
+        return $this->baseMana + $this->intelligence + $this->level;
     }
 
-    public function getNickname()
+    public function getNickname(): string
     {
         return $this->nickname;
     }
 
-    public function setNickname($nickname)
+    public function setNickname($nickname): void
     {
         $this->nickname = $nickname;
     }
 
-    public function pAttack($enemy)
+    public function pAttack($enemy): void
     {
         $enemyHP = $enemy->getHP();
         $damage = $this->getPhysicalAttack() - $enemy->getPResister();
@@ -147,7 +146,7 @@ class Char
         }
     }
 
-    public function getCharacterInfo()
+    public function getCharacterInfo(): string
     {
         return "<span class='size'>Nickname:</span> <span class='more'>{$this->getNickname()}</span><br>
                 Уровень: {$this->level}<br>
@@ -164,7 +163,7 @@ class Char
                 🛡️Класс брони: {$this->getArmor()}<br>";
     }
 
-    public function getHP()
+    public function getHP(): int
     {
         return $this->HP;
     }
@@ -182,7 +181,7 @@ class Char
         $this->HP = $this->getBaseHP() + $this->strength + $this->level;
     }
 
-    public function getBaseHP()
+    public function getBaseHP(): int
     {
         return $this->baseHP;
     }

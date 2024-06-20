@@ -3,11 +3,11 @@
 namespace Classes\FightClasses;
 class Warrior extends Char
 {
-    protected $strength = 6;
-    protected $intelligence = 2;
-    protected $agile = 3;
-    protected $baseHP = 7;
-    protected $baseMana = 3;
+    protected int $strength = 6;
+    protected int $intelligence = 2;
+    protected int $agile = 3;
+    protected int $baseHP = 7;
+    protected int $baseMana = 3;
     public function getPhysicalAttack(string $type = ''): int
     {
         switch ($type){
@@ -31,7 +31,7 @@ class Warrior extends Char
     }
 
 
-    public function getMagicAttack()
+    public function getMagicAttack(): int
     {
         $out = parent::getMagicAttack() - 3;
         if ($out < 0) {
@@ -39,7 +39,7 @@ class Warrior extends Char
         }
         return $out;
     }
-    public function getCharacterInfo()
+    public function getCharacterInfo(): string
     {
         $out = "<div class='char'>Воин<br>";
         $out .= parent::getCharacterInfo();

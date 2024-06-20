@@ -1,8 +1,10 @@
 <?php
 
 namespace Classes\ArmorClasses;
-class Armor
+abstract class Armor
 {
+
+    public int $NeedLevel;
 
     public function getPhysicalResist()
     {
@@ -19,7 +21,7 @@ class Armor
     public function setMagicResist($magicResist): void
     {
         $this->magicResist = $magicResist;
-    }
+   }
     public function getNeedLevel()
     {
         return $this->needLevel;
@@ -27,6 +29,10 @@ class Armor
     public function setNeedLevel($needLevel): void
     {
         $this->needLevel = $needLevel;
-    }
+
+
+   }
+    abstract public function getArmorName(): string;
+
 
 }
