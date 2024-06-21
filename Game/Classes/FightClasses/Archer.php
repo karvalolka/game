@@ -11,10 +11,23 @@ class Archer extends Char
 
     public function getPhysicalAttack(string $type = ''): int
     {
-        $out = parent::getPhysicalAttack() + $this->agile;
+        switch ($type){
+            case 'min':
+                $attack = parent::getPhysicalAttack('min');
+                break;
+            case 'max':
+                $attack = parent::getPhysicalAttack('max');
+                break;
+            default:
+                $attack = parent::getPhysicalAttack();
+        }
+
+        $out = $attack + $this->agile;
+
         if ($out < 0) {
             $out = 0;
         }
+
         return $out;
     }
     public function getMagicAttack(): int

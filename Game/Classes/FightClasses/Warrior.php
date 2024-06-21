@@ -8,6 +8,7 @@ class Warrior extends Char
     protected int $agile = 3;
     protected int $baseHP = 7;
     protected int $baseMana = 3;
+
     public function getPhysicalAttack(string $type = ''): int
     {
         switch ($type){
