@@ -4,6 +4,7 @@ namespace Classes\FightClasses;
 
 use Classes\ArmorClasses\Armor;
 use Classes\WeaponClasses\Weapon;
+use mysql_xdevapi\DatabaseObject;
 
 class Char
 {
@@ -131,7 +132,7 @@ class Char
         $this->nickname = $nickname;
     }
 
-    public function pAttack($enemy): void
+    public function pAttack(Char $enemy): void
     {
         $enemyHP = $enemy->getHP();
         $damage = $this->getPhysicalAttack() - $enemy->getPResister();
