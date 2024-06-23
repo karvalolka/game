@@ -4,7 +4,6 @@ namespace Classes\FightClasses;
 
 use Classes\ArmorClasses\Armor;
 use Classes\WeaponClasses\Weapon;
-use mysql_xdevapi\DatabaseObject;
 
 class Char
 {

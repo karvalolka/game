@@ -11,24 +11,30 @@
 <div>
     <p>
         <label for="name">Придумайте ник:</label><br>
-        <input name="name" id="name" type="text" placeholder="Введите ник">
+        <input tabindex="1" name="name" id="name" type="text" placeholder="Введите ник">
      </p>
 </div>
 <div>
     <p>Выберите класс:</p>
 
     <div>
-        <input type="radio" name="class" value="Archer"/> Archer
+        <label>
+            <input tabindex="2" type="radio" name="class" value="Archer"/>
+        </label> Archer
     </div>
     <div>
-        <input type="radio" name="class" value="Mage"/> Mage
+        <label>
+            <input tabindex="2" type="radio" name="class" value="Mage"/>
+        </label> Mage
     </div>
     <div>
-        <input type="radio" name="class" value="Warrior"/> Warrior
+        <label>
+            <input tabindex="2" type="radio" name="class" value="Warrior"/>
+        </label> Warrior
     </div>
 </div>
 <div>
-    <button type="submit">В игру!</button>
+    <button tabindex="3" type="submit">В игру!</button>
 </div>
 </form>
 <?php
