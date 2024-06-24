@@ -4,8 +4,6 @@ namespace Classes\ArmorClasses;
 abstract class Armor
 {
 
-    public int $NeedLevel;
-
     public function getPhysicalResist()
     {
         return $this->physicalResist;

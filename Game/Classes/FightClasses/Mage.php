@@ -19,7 +19,7 @@ class Mage extends Char
         return $out;
     }
 
-    public function mAttack($enemy)
+    public function mAttack($enemy): void
     {
         $enemyHP = $enemy->getHP();
         $damage = $this->getMagicAttack() - $enemy->getMResister();
