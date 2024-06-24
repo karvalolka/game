@@ -8,6 +8,8 @@ class Mage extends Char
     protected int $agile = 3;
     protected int $baseHP = 3;
     protected int $baseMana = 7;
+    protected int $MP;
+
     public function getPhysicalAttack(string $type = ''): int
     {
         $out = parent::getPhysicalAttack() + $this->agile - 3;
@@ -16,17 +18,22 @@ class Mage extends Char
         }
         return $out;
     }
+
     public function mAttack($enemy)
     {
         $enemyHP = $enemy->getHP();
         $damage = $this->getMagicAttack() - $enemy->getMResister();
-        if ($damage < 0) {
+        $manaPool = $this->getBaseMana();
+        if ($damage < 0 && $manaPool <= 0) {
             $damage = 0;
+        } else {
+            $newMp = $manaPool - 2;
+            $this->setMP($newMp);
         }
         $newHP = $enemyHP - $damage;
         $enemy->setHP($newHP);
         echo $this->getNickname() . ' отнял ' . '<span class="red">' . $damage . '</span>' . ' здоровья у ' . $enemy->getNickname() . ' при помощи ⚡️' . '<br>';
-        if ($enemy->getHP() <=0){
+        if ($enemy->getHP() <= 0) {
             echo $enemy->getNickname() . ' погиб' . '<br>';
         }
     }
@@ -39,4 +46,16 @@ class Mage extends Char
         return $out;
     }
 
+    public function getMP(): int
+    {
+        return $this->MP;
+   }
+
+    public function setMP(int $MP): void
+    {
+        if ($MP < 0) {
+            $MP = 0;
+        }
+        $this->MP = $MP;
+    }
 }

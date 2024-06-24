@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <link href="css/color.css" rel='stylesheet'>
+    <title> Чек игры </title>
 </head>
 <body>
 

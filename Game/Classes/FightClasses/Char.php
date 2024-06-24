@@ -190,6 +190,11 @@ class Char
     {
         $this->baseHP = $baseHP;
     }
+
+    public function setBaseMana(int $baseMana): void
+    {
+        $this->baseMana = $baseMana;
+    }
 }
 
 
