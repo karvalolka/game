@@ -126,10 +126,6 @@ class Char
         return $this->nickname;
     }
 
-    public function setNickname($nickname): void
-    {
-        $this->nickname = $nickname;
-    }
 
     public function pAttack(Char $enemy): void
     {
@@ -186,15 +182,6 @@ class Char
         return $this->baseHP;
     }
 
-    public function setBaseHP($baseHP): void
-    {
-        $this->baseHP = $baseHP;
-    }
-
-    public function setBaseMana(int $baseMana): void
-    {
-        $this->baseMana = $baseMana;
-    }
 }
 
 
