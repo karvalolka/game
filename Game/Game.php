@@ -16,10 +16,13 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $lordArcher = new Archer('Lord Archer');
 $lordArcher->updateHP();
+$lordArcher->updateMP();
 $aspen = new Mage('Aspen');
 $aspen->updateHP();
+$aspen->updateMP();
 $dunkan = new Warrior('Dunkan');
 $dunkan->updateHP();
+$dunkan->updateMP();
 
 $bow = new Bow();
 $sword = new Sword();
@@ -48,6 +51,7 @@ $lordArcher->pAttack($aspen);
 
 //$lordArcher->pAttack($aspen);
 //
+$lordArcher->pAttack($dunkan);
 $lordArcher->pAttack($dunkan);
 //
 $dunkan->pAttack($lordArcher);

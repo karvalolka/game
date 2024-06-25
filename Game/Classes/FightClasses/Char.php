@@ -17,6 +17,7 @@ class Char
     protected Weapon|null $weapon = null;
     protected Armor|null $armor = null;
     protected string $nickname;
+    protected int $MP;
 
 
     public function __construct($nickname)
@@ -119,14 +120,30 @@ class Char
 
     public function getBaseMana(): int
     {
-        return $this->baseMana + $this->intelligence + $this->level;
+        return $this->baseMana;
     }
+    public function setMP(int $MP): void
+    {
+        if ($MP < 0) {
+            $MP = 0;
+        }
+        $this->MP = $MP;
+    }
+    public function getMP(): int
+    {
+        return $this->MP;
+    }
+
+    public function updateMP(): int
+    {
+        return $this->MP = $this->baseMana + $this->intelligence + $this->level;
+    }
+
 
     public function getNickname(): string
     {
         return $this->nickname;
     }
-
 
     public function pAttack(Char $enemy): void
     {
@@ -148,7 +165,7 @@ class Char
         return "<span class='size'>Nickname:</span> <span class='more'>{$this->getNickname()}</span><br>
                 Уровень: {$this->level}<br>
                 HP: <span class='red'>{$this->getHP()}/{$this->updateHP()}</span>
-                <span class='block'>MP: <span class='blue'>{$this->getBaseMana()}/{$this->getBaseMana()}</span></span>
+                <span class='block'>MP: <span class='blue'>{$this->getMP()}/{$this->updateMP()}</span></span>
                 <span class='bold'>Сила: {$this->strength}<br>
                 Ловкость: {$this->agile}<br>
                 Интеллект: {$this->intelligence}</span>
@@ -175,8 +192,7 @@ class Char
 
     public function updateHP(): int
     {
-        $this->HP = $this->getBaseHP() + $this->strength + $this->level;
-        return $this->HP;
+        return $this->HP = $this->getBaseHP() + $this->strength + $this->level;
     }
 
     public function getBaseHP(): int

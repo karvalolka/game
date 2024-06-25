@@ -8,7 +8,6 @@ class Mage extends Char
     protected int $agile = 3;
     protected int $baseHP = 3;
     protected int $baseMana = 7;
-    protected int $MP;
 
     public function getPhysicalAttack(string $type = ''): int
     {
@@ -23,12 +22,12 @@ class Mage extends Char
     {
         $enemyHP = $enemy->getHP();
         $damage = $this->getMagicAttack() - $enemy->getMResister();
-        $manaPool = $this->getBaseMana();
+        $manaPool = $this->getMP();
         if ($damage < 0 || $manaPool <= 0) {
             $damage = 0;
         } else {
-            $newMp = $manaPool - 2;
-            $this->setMP($newMp);
+            $newMP = $manaPool - 2;
+            $this->setMP($newMP);
         }
         $newHP = $enemyHP - $damage;
         $enemy->setHP($newHP);
@@ -46,16 +45,5 @@ class Mage extends Char
         return $out;
     }
 
-    public function setMP(int $MP): void
-    {
-        if ($MP < 0) {
-            $MP = 0;
-        }
-        $this->MP = $MP;
-    }
 
-    public function getMP(): int
-    {
-        return $this->MP;
-    }
 }
