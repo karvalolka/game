@@ -24,7 +24,7 @@ class Mage extends Char
         $enemyHP = $enemy->getHP();
         $damage = $this->getMagicAttack() - $enemy->getMResister();
         $manaPool = $this->getBaseMana();
-        if ($damage < 0 && $manaPool <= 0) {
+        if ($damage < 0 || $manaPool <= 0) {
             $damage = 0;
         } else {
             $newMp = $manaPool - 2;
@@ -46,16 +46,16 @@ class Mage extends Char
         return $out;
     }
 
-    public function getMP(): int
-    {
-        return $this->MP;
-   }
-
     public function setMP(int $MP): void
     {
         if ($MP < 0) {
             $MP = 0;
         }
         $this->MP = $MP;
+    }
+
+    public function getMP(): int
+    {
+        return $this->MP;
     }
 }

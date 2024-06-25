@@ -18,6 +18,7 @@ class Char
     protected Armor|null $armor = null;
     protected string $nickname;
 
+
     public function __construct($nickname)
     {
         $this->nickname = $nickname;
@@ -146,8 +147,8 @@ class Char
     {
         return "<span class='size'>Nickname:</span> <span class='more'>{$this->getNickname()}</span><br>
                 Уровень: {$this->level}<br>
-                HP: <span class='red'>{$this->getHP()}</span>
-                <span class='block'>MP: <span class='blue'>{$this->getBaseMana()}</span></span>
+                HP: <span class='red'>{$this->getHP()}/{$this->updateHP()}</span>
+                <span class='block'>MP: <span class='blue'>{$this->getBaseMana()}/{$this->getBaseMana()}</span></span>
                 <span class='bold'>Сила: {$this->strength}<br>
                 Ловкость: {$this->agile}<br>
                 Интеллект: {$this->intelligence}</span>
@@ -172,9 +173,10 @@ class Char
         $this->HP = $HP;
     }
 
-    public function updateHP(): void
+    public function updateHP(): int
     {
         $this->HP = $this->getBaseHP() + $this->strength + $this->level;
+        return $this->HP;
     }
 
     public function getBaseHP(): int
