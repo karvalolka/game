@@ -9,7 +9,7 @@ class Pogoda
     public $temperature;
     public $date;
 
-    public function __construct($date, $sun, $wind_speed, $humidity, $rain, $temperature,)
+    public function __construct($date, $sun, $wind_speed, $humidity, $rain, $temperature)
     {
       $this->date = $date;
       $this->sun = $sun;
