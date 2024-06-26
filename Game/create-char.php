@@ -31,18 +31,21 @@ if ($_POST['class'] == 'Mage') {
     $m = new Mage(($_POST['name']));
     $m->setWeapon($grimoire);
     $m->updateHP();
+    $m->updateMP();
     $m->setArmor($tunic);
     echo $m->getCharacterInfo();
 } elseif ($_POST['class'] == 'Archer') {
     $a = new Archer(($_POST['name']));
     $a->setWeapon($bow);
     $a->updateHP();
+    $a->updateMP();
     $a->setArmor($leather);
     echo $a->getCharacterInfo();
 } elseif ($_POST['class'] == 'Warrior') {
     $w = new Warrior(($_POST['name']));
     $w->setWeapon($sword);
     $w->updateHP();
+    $w->updateMP();
     $w->setArmor($plate);
     echo $w->getCharacterInfo();
 }
