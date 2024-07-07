@@ -2,3 +2,5 @@
 vendor
 mysqli.php
 pdo.php
+Post.php
+PostInterface.php
